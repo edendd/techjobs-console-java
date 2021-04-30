@@ -48,7 +48,7 @@ public class JobData {
 
     public static ArrayList<HashMap<String, String>> findAll() {
 
-        // load data, if not already loaded
+        // load data, if not already loaded and give us all the jobs by key and value
         loadData();
 
         return allJobs;
@@ -70,15 +70,17 @@ public class JobData {
         // load data, if not already loaded
         loadData();
 
+
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
 
         for (HashMap<String, String> row : allJobs) {
 
             String aValue = row.get(column);
 
-            if (aValue.contains(value)) {
-                jobs.add(row);
-            }
+            //to avoid case-Insensitive
+
+
+
         }
 
         return jobs;
@@ -87,6 +89,33 @@ public class JobData {
     /**
      * Read in data from a CSV file and store it in a list
      */
+
+
+    public static ArrayList<HashMap<String, String>> findByValue(String value) {
+        loadData();
+        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+
+        for (HashMap<String, String> row : allJobs) {
+
+            for (String column : row.keySet()) {
+                String aValue = row.get(column);
+
+                if (aValue.contains(value.toUpperCase() )) {
+                    jobs.add(row);
+                    break;
+
+                }
+
+            }
+
+        }
+        return jobs;
+    }
+
+
+
+
+
     private static void loadData() {
 
         // Only load data once
