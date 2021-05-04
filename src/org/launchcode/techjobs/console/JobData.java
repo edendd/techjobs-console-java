@@ -69,16 +69,17 @@ public class JobData {
 
         // load data, if not already loaded
         loadData();
-
-
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
 
         for (HashMap<String, String> row : allJobs) {
 
             String aValue = row.get(column);
 
-            //to avoid case-Insensitive
+            //to avoid case-Insensitive code here
+            if (aValue.toUpperCase().contains(value.toUpperCase() )) {
+                jobs.add(row);
 
+            }
 
 
         }
@@ -100,7 +101,7 @@ public class JobData {
             for (String column : row.keySet()) {
                 String aValue = row.get(column);
 
-                if (aValue.contains(value.toUpperCase() )) {
+                if (aValue.toUpperCase().contains(value.toUpperCase() )) {
                     jobs.add(row);
                     break;
 

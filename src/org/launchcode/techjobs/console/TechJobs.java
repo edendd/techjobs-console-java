@@ -29,7 +29,7 @@ public class TechJobs {
 
         System.out.println("Welcome to LaunchCode's TechJobs App!");
 
-        // Allow the user to search until they manually quit
+        // Allow the user to search until they manually quit by looping the jobs
         while (true) {
 
             String actionChoice = getUserSelection("View jobs by:", actionChoices);
@@ -73,6 +73,7 @@ public class TechJobs {
                     //System.out.println("Search all fields not yet implemented.");
                 } else {
                     printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
+
                     //printJobs(JobData.searchByColumnAndValue(searchField,searchTerm));
                 }
             }
@@ -125,6 +126,7 @@ public class TechJobs {
             for (HashMap<String, String> job : someJobs) {
                 System.out.println("*****");
                 // printJobsFirst(job);
+
                 //System.out.println("*****\n");
                 for (Map.Entry<String, String> allFields : job.entrySet()) {
                     System.out.println(allFields.getKey() + ":" + allFields.getValue());
